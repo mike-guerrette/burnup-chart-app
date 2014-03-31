@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tasktype:</strong>
+  <%= @task.tasktype %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @task.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @task.end_date %>
+</p>
+
+<p>
+  <strong>Days on hold:</strong>
+  <%= @task.days_on_hold %>
+</p>
+
+<p>
+  <strong>Reason on hold:</strong>
+  <%= @task.reason_on_hold %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

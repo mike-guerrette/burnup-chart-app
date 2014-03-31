@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tasktype: MyString
+  start_date: 2014-03-31
+  end_date: 2014-03-31
+  days_on_hold: 1
+  reason_on_hold: MyText
+
+two:
+  tasktype: MyString
+  start_date: 2014-03-31
+  end_date: 2014-03-31
+  days_on_hold: 1
+  reason_on_hold: MyText
