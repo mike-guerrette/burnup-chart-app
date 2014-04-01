@@ -1,3 +1,17 @@
 // Place all the styles related to the Tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: lightblue;
+  font-family: Verdana;
+}
+
+.task_data {
+  border-collapse: collapse;
+  td, th{
+    padding: 10px 10px 10px 10px;
+  }
+}
+
+
