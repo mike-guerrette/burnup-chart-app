@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @project = Project.find(params[:project_id])
-    @tasks = @project.tasks
+    @tasks = @project.tasks.order('updated_at DESC').limit(10)
   end
 
   # GET /tasks/1
