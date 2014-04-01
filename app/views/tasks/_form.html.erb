@@ -1,3 +1,4 @@
+< %= #@project = Project.find(params[:project_id]) % >
 <%= form_for([@project, @project.tasks.build]) do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">

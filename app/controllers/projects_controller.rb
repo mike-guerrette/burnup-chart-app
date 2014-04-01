@@ -10,6 +10,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @projects = Project.find (params[:id])
+    redirect_to project_tasks_path(@projects)
   end
 
   # GET /projects/new
