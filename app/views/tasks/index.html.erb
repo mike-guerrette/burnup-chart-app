@@ -20,9 +20,9 @@
         <td><%= task.end_date %></td>
         <td><%= task.days_on_hold %></td>
         <td><%= task.reason_on_hold %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Show', task %></td>
+        <td><%#= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%#= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,6 @@
 
 <br>
 
-<%= link_to 'New Task', new_project_task_path %>
+<% @task = Task.new %>
+<%= render 'tasks/form' %>
+

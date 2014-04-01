@@ -4,7 +4,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+
+    @project = Project.find(params[:project_id])
+    @tasks = @project.tasks
   end
 
   # GET /tasks/1
@@ -14,6 +16,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
+    @project = Project.find(params[:project_id])
     @task = Task.new
   end
 
@@ -26,18 +29,19 @@ class TasksController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     #@task = Task.new(task_params)
-    @task = @project.tasks.create(params[:task].permit(:tasktype, :start_date, :end_date, :days_on_hold, :reason_on_hold))
+    @task = @project.tasks.create(params[:task].permit(:project_id, :tasktype, :start_date, :end_date, :days_on_hold, :reason_on_hold))
 
+=begin
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to @project, notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
-
+=end
     redirect_to project_path(@project)
 
   end

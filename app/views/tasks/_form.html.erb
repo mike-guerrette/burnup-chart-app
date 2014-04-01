@@ -1,5 +1,4 @@
-< %= #@project = Project.find(params[:project_id]) % >
-<%= form_for([@project, @project.tasks.build]) do |f| %>
+<%= form_for :task do |f| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
