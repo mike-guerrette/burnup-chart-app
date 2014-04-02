@@ -5,13 +5,22 @@
 .projectTable {
 
   #projectName {
-    width: 200px;
+    height: 75px;
+    width: 500px;
     text-align: center;
     border-right: 1px solid black;
   }
 
   #edit, #delete{
-    width: 60px;
+    width: 200px;
     text-align: center;
+  }
+
+  td, th {
+    font-size: 50px;
+  }
+
+  th {
+    border-bottom: 1px solid black;
   }
 }
