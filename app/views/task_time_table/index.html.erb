@@ -3,26 +3,22 @@
 <table border = "1" class = "task_data">
   <thead>
   <tr>
-    <th>Tasktype</th>
-    <th>Start date</th>
-    <th>End date</th>
-    <th>Days on hold</th>
-    <th><%= @tasktypes %></th>
-    <th><%= @data %></th>
+    <th>Task Type</th>
+    <th>Number of Tasks</th>
+    <th>Number of Days Spent</th>
   </tr>
   </thead>
 
   <tbody>
-  <% @tasks.each do |task| %>
+  <% @data.each do |d| %>
       <tr>
-        <td><%= task.tasktype %></td>
-        <td><%= task.start_date %></td>
-        <td><%= task.end_date %></td>
-        <td><%= task.days_on_hold %></td>
-        <td></td>
-        <td></td>
+        <td><%= d.fetch(:task_type) %></td>
+        <td><%= d.fetch(:num_tasks) %></td>
+        <td><%= d.fetch(:num_days) %></td>
       </tr>
 
   <% end %>
   </tbody>
 </table>
+<br>
+<%= link_to "Back", project_tasks_path %>
