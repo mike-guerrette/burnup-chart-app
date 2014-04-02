@@ -1,5 +1,4 @@
 class Project < ActiveRecord::Base
-
   has_many :tasks
   validates :name, presence:true
   #validates_format_of :name, :without => /^\d/
@@ -15,4 +14,5 @@ class Project < ActiveRecord::Base
   def to_param
     name
   end
+
 end

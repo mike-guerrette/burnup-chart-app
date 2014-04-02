@@ -1,6 +1,15 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
+  def get_types
+    @tasks = @project.tasks.find(params[:project_id])
+    @task = @project.tasks.find(params[:id])
+    @tasktypes = @tasks.pluck(tasktype)
+    log = File.open("log.txt", 'w')
+    log.puts(tasktypes)
+    log.close()
+  end
+
   # GET /tasks
   # GET /tasks.json
   def index

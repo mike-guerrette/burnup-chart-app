@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'task_time_table/index'
+
   get 'home/index'
 
   resources :projects do
     resources :tasks
+    resources :task_time_table
   end
 
   root to: "projects#index"
