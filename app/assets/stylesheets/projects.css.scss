@@ -2,3 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.projectTable {
+
+  #projectName {
+    width: 200px;
+    text-align: center;
+    border-right: 1px solid black;
+  }
+
+  #edit, #delete{
+    width: 60px;
+    text-align: center;
+  }
+}

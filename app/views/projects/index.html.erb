@@ -1,7 +1,7 @@
 <h1>Projects</h1>
 <b>Select a project to view/add tasks</b> <br><br>
 
-<table>
+<table class = "projectTable">
   <thead>
     <tr>
       <th>Name</th>
@@ -12,9 +12,9 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= link_to project.name, project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id = "projectName"><%= link_to project.name, project %></td>
+        <td id = "edit"><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td id = "delete"><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
