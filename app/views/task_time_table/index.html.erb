@@ -5,7 +5,9 @@
   <tr>
     <th>Task Type</th>
     <th>Number of Tasks</th>
+    <th>Number of Days on Hold</th>
     <th>Number of Days Spent</th>
+    <th>Average Days</th>
   </tr>
   </thead>
 
@@ -14,11 +16,14 @@
       <tr>
         <td><%= d.fetch(:task_type) %></td>
         <td><%= d.fetch(:num_tasks) %></td>
+        <td><%= d.fetch(:days_on_hold) %></td>
         <td><%= d.fetch(:num_days) %></td>
+        <td><%= d.fetch(:num_days) / d.fetch(:num_tasks).to_f %></td>
       </tr>
 
   <% end %>
   </tbody>
 </table>
 <br>
+
 <%= link_to "Back", project_tasks_path %>
