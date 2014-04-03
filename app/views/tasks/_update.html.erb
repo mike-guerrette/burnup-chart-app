@@ -1,0 +1,34 @@
+<%= form_for :task, method: :patch do |f| %>
+    <% if @task.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+          <ul>
+            <% @task.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <table>
+      <tr>
+        <td><%= f.label :tasktype, "Task Type:"%></td>
+        <td><%= f.label :start_date, "Start Date:" %></td>
+        <td><%= f.label :end_date, "End Date:" %></td>
+        <td><%= f.label :days_on_hold, "Days on Hold:" %></td>
+        <td><%= f.label :reason_on_hold, "Reason on Hold" %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><%= f.select :tasktype, options_for_select([nil, "Development", "Maintenance", "Tech Tasks", "Interruptions"]) %></td>
+        <td><%= f.date_select :start_date , use_month_numbers:true, order: [:month, :day, :year]  %></td>
+        <td><%= f.date_select :end_date , use_month_numbers:true, order: [:month, :day, :year]%></td>
+        <td><%= f.number_field :days_on_hold, :value => 0, :min => 0 %></td>
+        <td><%= f.text_field :reason_on_hold %></td>
+        <td><%= f.submit %></td>
+      </tr>
+
+    </table>
+
+<% end %>
