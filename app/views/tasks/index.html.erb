@@ -25,7 +25,7 @@
         <td><%= task.end_date %></td>
         <td><%= task.days_on_hold %></td>
         <td><%= task.reason_on_hold %></td>
-        <td><%= link_to 'Edit', project_tasks_path.to_s + '/' +  task.id.to_s + '/edit' %></td>
+        <td><%= link_to 'Edit', edit_project_task_path(:project_id => task.project.name, :id => task.id) %></td>
         <td><%= link_to 'Delete', project_tasks_path.to_s + '/' +  task.id.to_s , method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
