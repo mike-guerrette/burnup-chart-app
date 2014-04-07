@@ -17,7 +17,17 @@ class TasksController < ApplicationController
   end
 
   def import
-    Task.import(params[:file])
+
+    @project = Project.find(params[:project_id])
+
+    data = Task.import(params[:file])
+    num = 0
+    data.each do |task|
+      num += 1
+      logger.info "Importing task number: " + num.to_s
+      #@project.tasks.create(task[:task_type],task[:start_date], task[:end_date], task[:days_on_hold], task[:reason_on_hold])
+      @project.tasks.create! task
+    end
     redirect_to project_tasks_path, notice: "Spreadsheet imported."
   end
 
@@ -81,6 +91,14 @@ class TasksController < ApplicationController
       format.html { redirect_to project_tasks_path }
       format.json { head :no_content }
     end
+  end
+
+  def delete_all
+    @project = Project.find(params[:project_id])
+    @project.tasks.each do |task|
+      task.destroy
+    end
+
   end
 
   private

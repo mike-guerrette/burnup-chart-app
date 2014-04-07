@@ -11,7 +11,7 @@ class Task < ActiveRecord::Base
       log = File.open("log.txt", 'w')
       log.puts(end_date)
       log.close()
-      errors.add(:end_date, "must be after the start date")
+      errors.add(:end_date, "must be after the start date.")
     end
   end
 
@@ -27,16 +27,18 @@ class Task < ActiveRecord::Base
     row = 7
 
     while true
+
       tempHash = Hash.new
       start_date = workbook.cell(row, 5, workbook.sheets[1])
       break if start_date.nil?
+
       tempHash[:start_date] = start_date
 
       end_date = workbook.cell(row, 8, workbook.sheets[1])
       tempHash[:end_date] = end_date
 
       task_type = workbook.cell(row, 10, workbook.sheets[1])
-      tempHash[:task_type] = task_type
+      tempHash[:tasktype] = task_type
 
       days_on_hold = workbook.cell(row, 12, workbook.sheets[1])
       tempHash[:days_on_hold] = days_on_hold
@@ -47,6 +49,10 @@ class Task < ActiveRecord::Base
       row += 1
       data_array << (tempHash)
     end
+
+    return data_array
+
+
   end
 end
 
