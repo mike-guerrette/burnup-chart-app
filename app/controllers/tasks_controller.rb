@@ -21,14 +21,20 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
 
     data = Task.import(params[:file])
-    num = 0
-    data.each do |task|
-      num += 1
-      logger.info "Importing task number: " + num.to_s
-      #@project.tasks.create(task[:task_type],task[:start_date], task[:end_date], task[:days_on_hold], task[:reason_on_hold])
-      @project.tasks.create! task
+
+    unless data == -1
+      num = 0
+      data.each do |task|
+        num += 1
+        logger.info "Importing task number: " + num.to_s
+        #@project.tasks.create(task[:task_type],task[:start_date], task[:end_date], task[:days_on_hold], task[:reason_on_hold])
+        @project.tasks.create! task
+      end
+      redirect_to project_tasks_path, notice: "Spreadsheet imported."
+    else
+      redirect_to project_tasks_path, notice: "Import failed."
     end
-    redirect_to project_tasks_path, notice: "Spreadsheet imported."
+
   end
 
   # GET /tasks/new

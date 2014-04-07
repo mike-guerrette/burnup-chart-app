@@ -35,6 +35,12 @@ class Task < ActiveRecord::Base
       tempHash[:start_date] = start_date
 
       end_date = workbook.cell(row, 8, workbook.sheets[1])
+
+      if (end_date < start_date)
+        errors.add("End date is before start date in row " + row.to_s)
+        return -1
+      end
+
       tempHash[:end_date] = end_date
 
       task_type = workbook.cell(row, 10, workbook.sheets[1])
