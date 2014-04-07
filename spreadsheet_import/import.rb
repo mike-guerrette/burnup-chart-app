@@ -3,16 +3,6 @@ require 'roo'
 workbook = Roo::Excelx.new("Dev Metrics-InternalTools.xlsx")
 data_array = Array.new
 
-=begin
-start_date =  workbook.column(5, workbook.sheets[1]).drop(6).compact
-end_date = workbook.column(8, workbook.sheets[1]).drop(6).compact
-task_type = workbook.column(10, workbook.sheets[1]).drop(6).compact
-days_on_hold = workbook.column(12, workbook.sheets[1]).drop(6).compact
-reason_on_hold = workbook.column(13, workbook.sheets[1]).drop(6).compact
-
-puts start_date
-=end
-
 row = 7
 
 while true

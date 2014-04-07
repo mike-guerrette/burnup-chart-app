@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
     redirect_to project_tasks_path(@projects)
   end
 
+
   # GET /projects/new
   def new
     @project = Project.new

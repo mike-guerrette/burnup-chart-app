@@ -16,6 +16,11 @@ class TasksController < ApplicationController
     @task = @project.tasks.find(params[:id])
   end
 
+  def import
+    Task.import(params[:file])
+    redirect_to project_tasks_path, notice: "Spreadsheet imported."
+  end
+
   # GET /tasks/new
   def new
     @project = Project.find(params[:project_id])

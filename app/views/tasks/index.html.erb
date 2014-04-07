@@ -34,6 +34,10 @@
 
 <br>
 
+<%= form_tag import_project_tasks_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+<%end %>
 
 <%= link_to 'Chart', project_task_time_table_index_path %> <br><br>
 <%= link_to "Back", projects_path %>

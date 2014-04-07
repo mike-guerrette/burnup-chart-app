@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'home/index'
 
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      collection {post :import}
+    end
     resources :task_time_table
   end
 
