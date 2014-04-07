@@ -8,9 +8,6 @@ class Task < ActiveRecord::Base
   private
   def end_after_start
     if end_date < start_date
-      log = File.open("log.txt", 'w')
-      log.puts(end_date)
-      log.close()
       errors.add(:end_date, "must be after the start date.")
     end
   end
@@ -37,7 +34,7 @@ class Task < ActiveRecord::Base
       end_date = workbook.cell(row, 8, workbook.sheets[1])
 
       if (end_date < start_date)
-        errors.add("End date is before start date in row " + row.to_s)
+        #errors.add(:end_date, "End date is before start date in row " + row.to_s)
         return -1
       end
 

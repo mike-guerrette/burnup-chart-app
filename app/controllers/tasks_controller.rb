@@ -32,7 +32,7 @@ class TasksController < ApplicationController
       end
       redirect_to project_tasks_path, notice: "Spreadsheet imported."
     else
-      redirect_to project_tasks_path, notice: "Import failed."
+      render 'tasks/error'
     end
 
   end
