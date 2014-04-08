@@ -21,7 +21,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><%= f.select :tasktype, options_for_select([nil, "Development", "Maintenance", "Tech Tasks", "Interruptions"]) %></td>
+        <td><%= f.select :tasktype, options_for_select([nil, "Development", "Infrastructure", "Research/Spike", "Interruption", "Customer Support"]) %></td>
         <td><%= f.date_select :start_date , use_month_numbers:true, order: [:month, :day, :year]  %></td>
         <td><%= f.date_select :end_date , use_month_numbers:true, order: [:month, :day, :year]%></td>
         <td><%= f.number_field :days_on_hold, :value => 0, :min => 0 %></td>

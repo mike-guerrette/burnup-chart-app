@@ -52,8 +52,9 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @project = Project.find(params[:project_id])
-    #@task = Task.new(task_params)
     @task = @project.tasks.create(params[:task].permit(:tasktype, :start_date, :end_date, :days_on_hold, :reason_on_hold))
+    redirect_to project_path(@project)
+
 
 =begin
     respond_to do |format|
@@ -66,7 +67,7 @@ class TasksController < ApplicationController
       end
     end
 =end
-    redirect_to project_path(@project)
+
 
   end
 

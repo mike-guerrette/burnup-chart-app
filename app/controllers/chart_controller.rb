@@ -5,9 +5,9 @@ class ChartController < ApplicationController
   def generateWeeks
     weeks = []
     (1..7).each do |i|
-      weeks << (Date.today.end_of_week - i*7)
+      weeks.unshift (Date.today.end_of_week - i*7)
     end
-    weeks.to_s
+    weeks
   end
 
   def generateData(task_list)
