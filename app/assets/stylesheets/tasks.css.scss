@@ -11,6 +11,22 @@ body {
   border-collapse: collapse;
   td, th{
     padding: 13px 12px 13px 12px;
+    text-align: center;
+  }
+  #numTasks {
+    width: 85px
+  }
+  #numDaysOnHold {
+    width: 120px
+  }
+  #numDaysSpent {
+    width: 100px
+  }
+  #avgDaysSpent {
+    width: 100px
+  }
+  #avgDaysOnHold {
+    width: 120px
   }
 }
 

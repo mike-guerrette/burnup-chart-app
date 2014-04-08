@@ -1,4 +1,12 @@
 <h1>Error</h1>
 <h2>Spreadsheet could not be uploaded</h2>
+
+<% if @data == -1 %>
+    <h3>This spreadsheet contains errors.</h3><br>
+    <h3>The dates on row <%= @row.inspect %> are incorrect. Please correct.</h3>
+<% else %>
+    <h3>I dunno.</h3>
+<% end %>
+
 <br>
 <%= link_to 'Back', project_tasks_path %>

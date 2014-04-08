@@ -53,7 +53,7 @@ class Task < ActiveRecord::Base
       data_array << (tempHash)
     end
 
-    return data_array
+    return data_array, row
 
 
   end

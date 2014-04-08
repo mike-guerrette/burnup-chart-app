@@ -4,11 +4,11 @@
   <thead>
   <tr>
     <th>Task Type</th>
-    <th>Number of Tasks</th>
-    <th>Number of Days on Hold</th>
-    <th>Number of Days Spent</th>
-    <th>Average Days Spent</th>
-    <th>Average Days on Hold</th>
+    <th id = 'numTasks'>Number of Tasks</th>
+    <th id = 'numDaysOnHold'>Number of Days on Hold</th>
+    <th id = 'numDaysSpent'>Number of Days Spent</th>
+    <th id = 'avgDaysSpent'>Average Days Spent</th>
+    <th id = 'avgDaysOnHold'>Average Days on Hold</th>
   </tr>
   </thead>
 
@@ -19,8 +19,8 @@
         <td><%= d.fetch(:num_tasks) %></td>
         <td><%= d.fetch(:days_on_hold) %></td>
         <td><%= d.fetch(:num_days) %></td>
-        <td><%= d.fetch(:num_days) / d.fetch(:num_tasks).to_f %></td>
-        <td><%= d.fetch(:days_on_hold) / d.fetch(:num_tasks).to_f %></td>
+        <td><%= (d.fetch(:num_days) / d.fetch(:num_tasks).to_f).round(2) %></td>
+        <td><%= (d.fetch(:days_on_hold) / d.fetch(:num_tasks).to_f).round(2) %></td>
       </tr>
 
   <% end %>
