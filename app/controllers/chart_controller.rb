@@ -1,12 +1,18 @@
 require 'business_time'
 
 class ChartController < ApplicationController
-  def index
-    @project = Project.find(params[:project_id])
-    @tasks = @project.tasks
-    @tasktypes = @tasks.pluck('DISTINCT tasktype')
-    @data = []
 
+  def generateWeeks
+    weeks = []
+    (1..7).each do |i|
+      weeks << (Date.today.end_of_week - i*7)
+    end
+    weeks.to_s
+  end
+
+  def generateData(task_list)
+    @data_arr = []
+    @tasktypes = task_list.pluck('DISTINCT tasktype')
     @tasktypes.each do |ttype|
       tempHash = Hash.new()
       tempHash[:task_type] = ttype
@@ -28,11 +34,16 @@ class ChartController < ApplicationController
       end
       tempHash[:num_days] = totalDays
       tempHash[:days_on_hold] = daysOnHold
-      @data.append(tempHash)
-
+      @data_arr.append(tempHash)
     end
+      @data_arr
+  end
 
-
-
+  def index
+    @project = Project.find(params[:project_id])
+    @tasks = @project.tasks
+    @data = generateData(@tasks)
+    @weeks = generateWeeks
+    logger.info @weeks
   end
 end

@@ -1,6 +1,4 @@
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script scr="/assets/highcharts.js"></script>
-<div id="container" style="min-width: 310px; height: 600px; margin: 40"></div>
+<div id="container" style="width: 1000px; height: 600px; margin: 0 auto; float:left"></div>
 
 <script type="text/javascript">
     $(function () {
@@ -9,10 +7,10 @@
                 type: 'column'
             },
             title: {
-                text: 'Stacked column chart'
+                text: '<%= @project.name.to_s %>'
             },
             xAxis: {
-                categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+                categories:
             },
             yAxis: {
                 min: 0,
@@ -36,7 +34,7 @@
                 backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
                 borderColor: '#CCC',
                 borderWidth: 1,
-                shadow: false
+                shadow: true
             },
             tooltip: {
                 formatter: function() {
