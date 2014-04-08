@@ -93,6 +93,7 @@ class ChartController < ApplicationController
     @data = generateData
     @weeks = generateWeeks
     @series = generateSeries
-    logger.info @weeks
+    numScope = params[:scope]
+    numScope.nil? ? @scope = 125 : @scope = numScope
   end
 end
