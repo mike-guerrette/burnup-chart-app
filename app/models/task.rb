@@ -44,7 +44,7 @@ class Task < ActiveRecord::Base
       tempHash[:tasktype] = task_type
 
       days_on_hold = workbook.cell(row, 12, workbook.sheets[1])
-      tempHash[:days_on_hold] = days_on_hold
+      tempHash[:days_on_hold] = days_on_hold || 0
 
       reason_on_hold = workbook.cell(row, 13, workbook.sheets[1])
       tempHash[:reason_on_hold] = reason_on_hold

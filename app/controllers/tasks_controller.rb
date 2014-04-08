@@ -5,8 +5,9 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @project = Project.find(params[:project_id])
-    @tasks = @project.tasks.order('updated_at DESC').limit(10)
-
+    numShow = params[:show]
+    numShow.nil? ? num = 10 : num = numShow
+    @tasks = @project.tasks.order('updated_at DESC').limit(num)
   end
 
   # GET /tasks/1
@@ -30,7 +31,7 @@ class TasksController < ApplicationController
         #@project.tasks.create(task[:task_type],task[:start_date], task[:end_date], task[:days_on_hold], task[:reason_on_hold])
         @project.tasks.create! task
       end
-      redirect_to project_tasks_path, notice: "Spreadsheet imported."
+      redirect_to project_tasks_path, alert: "Spreadsheet imported."
     else
       render 'tasks/error'
     end
