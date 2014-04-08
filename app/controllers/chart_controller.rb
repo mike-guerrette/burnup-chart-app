@@ -10,9 +10,9 @@ class ChartController < ApplicationController
     weeks
   end
 
-  def generateData(task_list)
+  def generateData
     @data_arr = []
-    @tasktypes = task_list.pluck('DISTINCT tasktype')
+
     @tasktypes.each do |ttype|
       tempHash = Hash.new()
       tempHash[:task_type] = ttype
@@ -39,11 +39,60 @@ class ChartController < ApplicationController
       @data_arr
   end
 
+  def getWeeklyData(tasktype)
+    temp = []
+    @weeks.each do |week|
+      numTasks = @tasks.where(tasktype: tasktype)
+                        .where("end_date < ?", week)
+                        .where("end_date > ?", week - 7)
+                        .length
+      temp << numTasks
+    end
+    temp
+  end
+
+  def getCumulativeTasks
+    temp = []
+    @weeks.each do |week|
+      temp << @tasks.where("end_date < ?", week).length
+    end
+    temp
+  end
+
+  def generateSeries
+    series = []
+
+    #Adding task type totals to stacked bar chart
+    @tasktypes.each do |ttype|
+      temp = Hash.new
+      temp[:name] = ttype
+      temp[:type] = 'column'
+      #temp[:yAxis] = 1
+      temp[:data] = getWeeklyData(ttype)
+      series << temp
+    end
+
+    #Adding data for cumulative task line
+    cline = Hash.new
+    cline[:name] = 'Cumulative'
+    cline[:type] = 'spline'
+    cline[:yAxis] = 1
+    cline[:data] = getCumulativeTasks
+    cline[:dashStyle] = 'shortdot'
+
+    series << cline
+
+    return series
+
+  end
+
   def index
     @project = Project.find(params[:project_id])
     @tasks = @project.tasks
-    @data = generateData(@tasks)
+    @tasktypes = @tasks.pluck('DISTINCT tasktype')
+    @data = generateData
     @weeks = generateWeeks
+    @series = generateSeries
     logger.info @weeks
   end
 end

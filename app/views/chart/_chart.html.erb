@@ -4,7 +4,7 @@
     $(function () {
         $('#container').highcharts({
             chart: {
-                type: 'column'
+                zoomType: 'xy'
             },
             title: {
                 text: '<%= @project.name.to_s %>'
@@ -14,6 +14,7 @@
             },
             yAxis: [{
                 min: 0,
+                tickInterval: 2,
                 title: {
                     text: 'Weekly Tasks/Stories'
                 },
@@ -31,12 +32,18 @@
                     title: {
                         text: 'Cumulative Tasks / Stories'
                     },
+                    plotLines: [{
+                        color: '#000',
+                        dashStyle: 'longdash',
+                        width: 2,
+                        value: 125
+                    }],
                     stackLabels: {
                         style: {
                             fontWeight: 'bold',
                             color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
                         }
-                    },
+                    }
 
                 }],
             legend: {
@@ -62,23 +69,16 @@
                     stacking: 'normal',
                     dataLabels: {
                         enabled: true,
-                        color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+                        color: 'transparent',
                         style: {
                             textShadow: '0 0 3px black, 0 0 3px black'
                         }
                     }
                 }
             },
-            series: [{
-                name: 'John',
-                data: [5, 3, 4, 7, 2, 1, 1]
-            }, {
-                name: 'Jane',
-                data: [2, 2, 3, 2, 1, 1, 1]
-            }, {
-                name: 'Joe',
-                data: [3, 4, 4, 2, 5, 1, 1]
-            }]
+
+
+            series: <%= raw @series.to_json %>
         });
     });
 
