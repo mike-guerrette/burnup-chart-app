@@ -2,15 +2,12 @@ Rails.application.routes.draw do
 
   get 'chart/index'
 
-  get 'task_time_table/index'
-
   get 'home/index'
 
   resources :projects do
     resources :tasks do
       collection {post :import}
     end
-    resources :task_time_table
     resources :chart
   end
 

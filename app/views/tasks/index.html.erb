@@ -10,9 +10,8 @@
   <%= link_to 'Show 25', project_tasks_path(@project.name, :show => 25) %> <br><br>
   <%= link_to 'Show 50', project_tasks_path(@project.name, :show => 50) %> <br><br>
   <%= link_to 'Show All', project_tasks_path(@project.name, :show => @project.tasks.count) %> <br><br><br>
-  <strong><%= link_to 'Chart', project_task_time_table_index_path %></strong>
+  <strong><%= link_to 'Chart', project_chart_index_path %></strong>
   <br>
-  <%= link_to "Test Chart", project_chart_index_path %>
 </div>
 
 <table border = "1" class = "task_data">
