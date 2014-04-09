@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   has_many :tasks
+  has_one :scope
   validates :name, presence:true
   #validates_format_of :name, :without => /^\d/
 

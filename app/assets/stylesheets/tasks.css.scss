@@ -9,6 +9,10 @@ body {
 
 .task_data {
   border-collapse: collapse;
+  -moz-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  -webkit-border-radius: 15px;
+
   td, th{
     padding: 13px 12px 13px 12px;
     text-align: center;

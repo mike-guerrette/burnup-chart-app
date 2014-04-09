@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       collection {post :import}
     end
     resources :chart
+    resources :scope
   end
 
   root to: "projects#index"
