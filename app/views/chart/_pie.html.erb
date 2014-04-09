@@ -1,0 +1,36 @@
+<div id="pie_chart" style="width: 400px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#pie_chart').highcharts({
+            exporting: {
+                enabled: false
+            },
+            chart: {
+                backgroundColor: null,
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: ''
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000'
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Task Type Breakdown',
+                data: <%= raw @pie_data.to_json %>
+            }]
+        });
+    });
+</script>

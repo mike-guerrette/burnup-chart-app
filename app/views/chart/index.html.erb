@@ -1,7 +1,12 @@
 <h1><%= @project.name %>- Burn-Up Chart</h1>
 
-<%= render 'table' %>
-<br>
+<table>
+  <tr>
+    <td><%= render 'table' %></td>
+    <td width = 40></td>
+    <td><%= render 'pie' %></td>
+  </tr>
+</table>
 
 <%= render 'chart_eightweeks' %>
 <br>

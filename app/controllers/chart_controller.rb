@@ -95,6 +95,14 @@ class ChartController < ApplicationController
 
   end
 
+  def generatePieData
+    data = []
+    @tasktypes.each do |ttype|
+      data << [ttype, @tasks.where(tasktype: ttype).length]
+    end
+    data
+  end
+
   def index
     @project = Project.find(params[:project_id])
     @tasks = @project.tasks
@@ -105,6 +113,7 @@ class ChartController < ApplicationController
 
     @months = generateMonths
     @series2 = generateSeries (@months)
+    @pie_data = generatePieData
 
     numScope = params[:scope]
     numScope.nil? ? @scope = 125 : @scope = numScope
