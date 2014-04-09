@@ -1,16 +1,18 @@
-<div id="container" style="width: 1000px; height: 600px; margin: 0 auto;"></div>
+<div id="container2" style="width: 1000px; height: 600px; margin: 0 auto;"></div>
 
 <script type="text/javascript">
     $(function () {
-        $('#container').highcharts({
+        $('#container2').highcharts({
             chart: {
-                zoomType: 'xy'
+                zoomType: 'x',
+                alignTicks: false,
+
             },
             title: {
-                text: '<%= @project.name.to_s %>'
+                text: '<%= @project.name.to_s %> - Six Months'
             },
             xAxis: {
-                categories: <%= raw @weeks.to_json %>
+                categories: <%= raw @months.to_json %>
             },
             yAxis: [{
                 min: 0,
@@ -29,6 +31,8 @@
             },
                 {
                     min: 0,
+                    max: <%= @scope %> + 20,
+                    gridLineWidth: 0,
                     title: {
                         text: 'Cumulative Tasks / Stories'
                     },
@@ -78,7 +82,7 @@
             },
 
 
-            series: <%= raw @series.to_json %>
+            series: <%= raw @series2.to_json %>
         });
     });
 

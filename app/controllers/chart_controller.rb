@@ -10,6 +10,15 @@ class ChartController < ApplicationController
     weeks
   end
 
+  def generateMonths
+    weeks = []
+    (1..24).each do |i|
+      weeks.unshift (Date.today.end_of_week - i*7)
+    end
+    logger.info weeks
+    weeks
+  end
+
   def generateData
     @data_arr = []
 
@@ -39,9 +48,9 @@ class ChartController < ApplicationController
       @data_arr
   end
 
-  def getWeeklyData(tasktype)
+  def getWeeklyData(tasktype, time_period)
     temp = []
-    @weeks.each do |week|
+    time_period.each do |week|
       numTasks = @tasks.where(tasktype: tasktype)
                         .where("end_date < ?", week)
                         .where("end_date > ?", week - 7)
@@ -51,15 +60,15 @@ class ChartController < ApplicationController
     temp
   end
 
-  def getCumulativeTasks
+  def getCumulativeTasks (time_period)
     temp = []
-    @weeks.each do |week|
+    time_period.each do |week|
       temp << @tasks.where("end_date < ?", week).length
     end
     temp
   end
 
-  def generateSeries
+  def generateSeries (time_period)
     series = []
 
     #Adding task type totals to stacked bar chart
@@ -68,7 +77,7 @@ class ChartController < ApplicationController
       temp[:name] = ttype
       temp[:type] = 'column'
       #temp[:yAxis] = 1
-      temp[:data] = getWeeklyData(ttype)
+      temp[:data] = getWeeklyData(ttype, time_period)
       series << temp
     end
 
@@ -77,7 +86,7 @@ class ChartController < ApplicationController
     cline[:name] = 'Cumulative'
     cline[:type] = 'spline'
     cline[:yAxis] = 1
-    cline[:data] = getCumulativeTasks
+    cline[:data] = getCumulativeTasks (time_period)
     cline[:dashStyle] = 'shortdot'
 
     series << cline
@@ -92,7 +101,11 @@ class ChartController < ApplicationController
     @tasktypes = @tasks.pluck('DISTINCT tasktype')
     @data = generateData
     @weeks = generateWeeks
-    @series = generateSeries
+    @series1 = generateSeries (@weeks)
+
+    @months = generateMonths
+    @series2 = generateSeries (@months)
+
     numScope = params[:scope]
     numScope.nil? ? @scope = 125 : @scope = numScope
   end

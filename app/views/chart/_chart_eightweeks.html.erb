@@ -1,0 +1,89 @@
+<div id="container" style="width: 1000px; height: 600px; margin: 0 auto;"></div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                zoomType: 'x',
+                alignTicks: false
+            },
+            title: {
+                text: '<%= @project.name.to_s %> - Eight Weeks'
+            },
+            xAxis: {
+                categories: <%= raw @weeks.to_json %>
+            },
+            yAxis: [{
+                min: 0,
+                tickInterval: 2,
+                title: {
+                    text: 'Weekly Tasks/Stories'
+                },
+                stackLabels: {
+                    enabled: true,
+                    style: {
+                        fontWeight: 'bold',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                    }
+                },
+                opposite: true
+            },
+                {
+                    min: 0,
+                    max: <%= @scope %> + 20,
+                    gridLineWidth: 0,
+                    title: {
+                        text: 'Cumulative Tasks / Stories'
+                    },
+                    plotLines: [{
+                        color: '#000',
+                        dashStyle: 'longdash',
+                        width: 2,
+                        value: <%= @scope %>
+                    }],
+                    stackLabels: {
+                        style: {
+                            fontWeight: 'bold',
+                            color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+                        }
+                    }
+
+                }],
+            legend: {
+                align: 'right',
+                x: -70,
+                verticalAlign: 'top',
+                y: 20,
+                floating: true,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+                borderColor: '#CCC',
+                borderWidth: 1,
+                shadow: true
+            },
+            tooltip: {
+                formatter: function() {
+                    return '<b>'+ this.x +'</b><br/>'+
+                            this.series.name +': '+ this.y +'<br/>'+
+                            'Total: '+ this.point.stackTotal;
+                }
+            },
+            plotOptions: {
+                column: {
+                    stacking: 'normal',
+                    dataLabels: {
+                        enabled: true,
+                        color: 'transparent',
+                        style: {
+                            textShadow: '0 0 3px black, 0 0 3px black'
+                        }
+                    }
+                }
+            },
+
+
+            series: <%= raw @series1.to_json %>
+        });
+    });
+
+
+</script>
