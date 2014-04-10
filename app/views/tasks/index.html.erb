@@ -44,21 +44,21 @@
 
 
     <div id = "showButtons">
-        <%= link_to 'Show 10', project_tasks_path(@project.name, :show => 10) %> <br><br>
-        <%= link_to 'Show 25', project_tasks_path(@project.name, :show => 25) %> <br><br>
-        <%= link_to 'Show 50', project_tasks_path(@project.name, :show => 50) %> <br><br>
-        <%= link_to 'Show All', project_tasks_path(@project.name, :show => @project.tasks.count) %> <br><br><br>
-        <strong><%= link_to 'Chart', project_chart_index_path %></strong>
+        <%= link_to 'Show 10', project_tasks_path(@project.name, :show => 10), class: "link", id: "show" %> <br><br>
+        <%= link_to 'Show 25', project_tasks_path(@project.name, :show => 25), class: "link", id: "show"  %> <br><br>
+        <%= link_to 'Show 50', project_tasks_path(@project.name, :show => 50), class: "link", id: "show"  %> <br><br>
+        <%= link_to 'Show All', project_tasks_path(@project.name, :show => @project.tasks.count), class: "link", id: "show"  %> <br><br><br>
+        <strong><%= link_to 'Chart', project_chart_index_path, class: 'link', id: 'chart' %></strong>
         <br>
     </div>
-
-    <div float="left" style="padding-top: 500px">
+<br>
+    <div float="left" style="clear:left; padding-top: 20px">
       <%= form_tag import_project_tasks_path, multipart: true do %>
           <%= file_field_tag :file %>
           <%= submit_tag "Import" %>
       <%end %>
 
       <br>
-      <%= link_to "Back", projects_path, class: "link" %>
+      <%= link_to "Back", projects_path, class: "link"%>
     </div>
 </div>

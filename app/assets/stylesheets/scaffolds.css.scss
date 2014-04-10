@@ -77,6 +77,22 @@ div {
     border: 1px solid black;
   }
 
+  &#show {
+    font-size: 17px;
+  }
+
+  &#chart {
+    background-color: #bb0000;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    padding: 10px 16px 10px 16px;
+
+    &:hover {
+      background-color: #ae0000;
+    }
+  }
+
 }
 
 .link2 {

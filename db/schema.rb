@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20140410145412) do
     t.date     "created_date"
   end
 
+  create_table "scopes", force: true do |t|
+    t.integer  "project_id"
+    t.date     "week_end_date"
+    t.integer  "scope"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tasks", force: true do |t|
     t.string   "tasktype"
     t.date     "start_date"
