@@ -19,7 +19,8 @@ class Task < ActiveRecord::Base
     #File.rename(file.path, file.path + File.extname(file.original_filename))
 
     workbook = Roo::Excelx.new(file.path, nil, :ignore)
-    data_array = Array.new
+    task_data = Array.new
+    scope.data = Array.new
 
     row = 7
 
@@ -49,11 +50,10 @@ class Task < ActiveRecord::Base
       reason_on_hold = workbook.cell(row, 13, workbook.sheets[1])
       tempHash[:reason_on_hold] = reason_on_hold
 
-      row += 1
-      data_array << (tempHash)
+      task_data << (tempHash)
     end
 
-    return data_array, row
+    return task_data
 
 
   end

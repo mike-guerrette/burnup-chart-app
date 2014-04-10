@@ -7,7 +7,7 @@
       <%= render 'tasks/form' %>
     </div>
 
-    <table class = "table" style="float: left">
+    <table class = "table" style="float: left; margin-top: 16px">
       <thead>
       <tr>
         <th>Task Type</th>
@@ -52,13 +52,13 @@
         <br>
     </div>
 
-    <div>
+    <div float="left" style="padding-top: 500px">
       <%= form_tag import_project_tasks_path, multipart: true do %>
           <%= file_field_tag :file %>
           <%= submit_tag "Import" %>
       <%end %>
 
       <br>
-      <%= link_to "Back", projects_path %>
+      <%= link_to "Back", projects_path, class: "link" %>
     </div>
 </div>

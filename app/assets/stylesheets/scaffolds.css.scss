@@ -13,12 +13,12 @@ pre {
 
 a {
   color: #000;
-  &:visited {
-    color: #666;
-  }
+  text-decoration: none;
+
   &:hover {
     color: #fff;
     background-color: transparent;
+    text-decoration: underline;
   }
 }
 
@@ -59,4 +59,34 @@ div {
     font-size: 12px;
     list-style: square;
   }
+}
+
+.link {
+  font-family: Verdana;
+  border: 1px solid #979797;
+  padding: 2px 7px 2px 7px;
+  background-color: #e1e1e1;
+  font-size: 13px;
+  margin-left: 2px;
+  border-radius: 2px;
+
+  &:hover {
+    background-color: #e1e1e1;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+  }
+
+}
+
+.link2 {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
 }

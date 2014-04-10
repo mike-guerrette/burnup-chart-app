@@ -21,13 +21,10 @@ class TasksController < ApplicationController
 
     @project = Project.find(params[:project_id])
 
-    @data, @row = Task.import(params[:file])
+    @data = Task.import(params[:file])
 
     unless @data == -1
-      num = 7
       @data.each do |task|
-        num += 1
-        logger.info "Importing task number: " + num.to_s
         #@project.tasks.create(task[:task_type],task[:start_date], task[:end_date], task[:days_on_hold], task[:reason_on_hold])
         @project.tasks.create! task
       end
