@@ -1,54 +1,64 @@
-<h1><%= @project.name %></h1>
+<div class = 'index'>
 
-<% @task = Task.new %>
-<%= render 'tasks/form' %>
+    <h1><%= @project.name %></h1>
 
-<br>
+    <div>
+      <% @task = Task.new %>
+      <%= render 'tasks/form' %>
+    </div>
 
-<div id = "showButtons">
-  <%= link_to 'Show 10', project_tasks_path(@project.name, :show => 10) %> <br><br>
-  <%= link_to 'Show 25', project_tasks_path(@project.name, :show => 25) %> <br><br>
-  <%= link_to 'Show 50', project_tasks_path(@project.name, :show => 50) %> <br><br>
-  <%= link_to 'Show All', project_tasks_path(@project.name, :show => @project.tasks.count) %> <br><br><br>
-  <strong><%= link_to 'Chart', project_chart_index_path %></strong>
-  <br>
-</div>
-
-<table border = "1" class = "task_data">
-  <thead>
-  <tr>
-    <th>Task Type</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Days on Hold</th>
-    <th>Reason on Hold</th>
-    <th colspan="2"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @tasks.each do |task| %>
+    <table class = "table" style="float: left">
+      <thead>
       <tr>
-        <td><%= task.tasktype %></td>
-        <td><%= task.start_date %></td>
-        <td><%= task.end_date %></td>
-        <td><%= task.days_on_hold %></td>
-        <td><%= task.reason_on_hold %></td>
-        <td><%= link_to 'Edit', edit_project_task_path(:project_id => task.project.name, :id => task.id) %></td>
-        <td><%= link_to 'Delete', project_tasks_path.to_s + '/' +  task.id.to_s , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Task Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Days on Hold</th>
+        <th>Reason on Hold</th>
+        <th colspan="2"></th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @tasks.each do |task| %>
+          <tr>
+            <td><%= task.tasktype %></td>
+            <td><%= task.start_date %></td>
+            <td><%= task.end_date %></td>
+            <td><%= task.days_on_hold %></td>
+            <td><%= task.reason_on_hold %></td>
+            <td><%= link_to 'Edit', edit_project_task_path(:project_id => task.project.name, :id => task.id) %></td>
+            <td><%= link_to 'Delete', project_tasks_path.to_s + '/' +  task.id.to_s , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= form_tag import_project_tasks_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import" %>
-<%end %>
+    <script type="text/javascript">
+        $(document).ready(function()
+                {
+                    $("table").tablesorter();
+                }
+        );
+    </script>
 
-<br>
-<%= link_to "Back", projects_path %>
 
+    <div id = "showButtons">
+        <%= link_to 'Show 10', project_tasks_path(@project.name, :show => 10) %> <br><br>
+        <%= link_to 'Show 25', project_tasks_path(@project.name, :show => 25) %> <br><br>
+        <%= link_to 'Show 50', project_tasks_path(@project.name, :show => 50) %> <br><br>
+        <%= link_to 'Show All', project_tasks_path(@project.name, :show => @project.tasks.count) %> <br><br><br>
+        <strong><%= link_to 'Chart', project_chart_index_path %></strong>
+        <br>
+    </div>
 
+    <div>
+      <%= form_tag import_project_tasks_path, multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Import" %>
+      <%end %>
+
+      <br>
+      <%= link_to "Back", projects_path %>
+    </div>
+</div>

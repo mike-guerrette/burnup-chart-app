@@ -1,17 +1,21 @@
-<h1><%= @project.name %>- Burn-Up Chart</h1>
+<div class = 'index'>
 
-<table>
-  <tr>
-    <td><%= render 'table' %></td>
-    <td width = 40></td>
-    <td><%= render 'pie' %></td>
-  </tr>
-</table>
+    <h1><%= @project.name %>- Burn-Up Chart</h1>
 
-<%= render 'chart_eightweeks' %>
-<br>
+    <table>
+      <tr>
+        <td><%= render 'table' %></td>
+        <td width = 40></td>
+        <td><%= render 'pie' %></td>
+      </tr>
+    </table>
 
-<%= render 'chart_sixmonths' %>
-<br>
+    <%= render 'chart_eightweeks' %>
+    <br>
 
-<%= link_to "Back", project_tasks_path %>
+    <%= render 'chart_sixmonths' %>
+    <br>
+
+    <%= link_to "Back", project_tasks_path %>
+
+</div>

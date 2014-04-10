@@ -1,0 +1,46 @@
+.table {
+  font-family: Verdana;
+  border-collapse: separate;
+  border-spacing: 0px;
+  background-color: lightblue;
+
+  th {
+    font-size: 16px;
+    padding:15px;
+    color:#fff;
+    border-right: 3px solid lightblue;
+    border-top:5px solid #1C6B8C;
+    background-color:#2F8BBD;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+  }
+
+  th:hover {
+    cursor: pointer;
+    background-color: #1C6B8C;
+  }
+
+  td{
+    font-size: 16px;
+    padding:10px;
+    text-align:center;
+    background-color:#DEDEDE;
+    border: 2px solid #fff;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    color:#000;
+  }
+  td:hover {
+    background-color: #fff;
+  }
+
+}
+.chart {
+  width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+
+}
+
+
+

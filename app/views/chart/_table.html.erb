@@ -1,4 +1,4 @@
-<table border = "1" class = "task_data" style="margin: 0 auto;">
+<table class = "table" style="margin: 0 auto;">
   <thead>
   <tr>
     <th>Task Type</th>
@@ -24,3 +24,11 @@
   <% end %>
   </tbody>
 </table>
+
+<script type="text/javascript">
+    $(document).ready(function()
+            {
+                $("table").tablesorter();
+            }
+    );
+</script>

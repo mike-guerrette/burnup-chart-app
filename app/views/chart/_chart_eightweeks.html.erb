@@ -1,4 +1,4 @@
-<div id="container" style="width: 1000px; height: 600px; margin: 0 auto;"></div>
+<div id="container" class = 'chart'></div>
 
 <script type="text/javascript">
     $(function () {
@@ -66,8 +66,7 @@
             tooltip: {
                 formatter: function() {
                     return '<b>'+ this.x +'</b><br/>'+
-                            this.series.name +': '+ this.y +'<br/>'+
-                            'Total: '+ this.point.stackTotal;
+                            this.series.name +': '+ this.y +'<br/>'
                 }
             },
             plotOptions: {
@@ -75,10 +74,7 @@
                     stacking: 'normal',
                     dataLabels: {
                         enabled: true,
-                        color: 'transparent',
-                        style: {
-                            textShadow: '0 0 3px black, 0 0 3px black'
-                        }
+                        color: 'tranparent'
                     }
                 }
             },

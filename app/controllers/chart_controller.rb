@@ -11,12 +11,12 @@ class ChartController < ApplicationController
   end
 
   def generateMonths
-    weeks = []
+    months = []
     (1..24).each do |i|
-      weeks.unshift (Date.today.end_of_week - i*7)
+      months.unshift (Date.today.end_of_week - i*7)
     end
-    logger.info weeks
-    weeks
+    logger.info months
+    months
   end
 
   def generateData

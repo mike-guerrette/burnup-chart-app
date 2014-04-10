@@ -1,12 +1,11 @@
-<div id="container2" style="width: 1000px; height: 600px; margin: 0 auto;"></div>
+<div id="container2" class = 'chart'></div>
 
 <script type="text/javascript">
     $(function () {
         $('#container2').highcharts({
             chart: {
                 zoomType: 'x',
-                alignTicks: false,
-
+                alignTicks: false
             },
             credits: {
                 enabled: false
@@ -67,8 +66,7 @@
             tooltip: {
                 formatter: function() {
                     return '<b>'+ this.x +'</b><br/>'+
-                            this.series.name +': '+ this.y +'<br/>'+
-                            'Total: '+ this.point.stackTotal;
+                            this.series.name +': '+ this.y +'<br/>'
                 }
             },
             plotOptions: {
@@ -77,9 +75,6 @@
                     dataLabels: {
                         enabled: true,
                         color: 'transparent',
-                        style: {
-                            textShadow: '0 0 3px black, 0 0 3px black'
-                        }
                     }
                 }
             },
