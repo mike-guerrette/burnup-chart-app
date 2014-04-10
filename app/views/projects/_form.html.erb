@@ -11,10 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
+    <table>
+      <tr>
+        <td><strong><%= f.label :name %>:</strong></td>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <td><strong>Created Date:</strong></td>
+        <td><%= f.date_select :created_date,  order: [:month, :day, :year] %></td>
+      </tr>
+      <tr>
+        <td><strong>Target Release Date:</strong></td>
+        <td><%= f.date_select :release_date,  order: [:month, :day, :year] %></td>
+      </tr>
+    </table>
+
   <div class="actions">
     <%= f.submit %>
   </div>
