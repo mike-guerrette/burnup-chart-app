@@ -76,7 +76,6 @@ class ChartController < ApplicationController
       temp = Hash.new
       temp[:name] = ttype
       temp[:type] = 'column'
-      #temp[:yAxis] = 1
       temp[:data] = getWeeklyData(ttype, time_period)
       series << temp
     end
@@ -88,8 +87,21 @@ class ChartController < ApplicationController
     cline[:yAxis] = 1
     cline[:data] = getCumulativeTasks (time_period)
     cline[:dashStyle] = 'shortdot'
-
     series << cline
+
+    #Adding items to have them show on the legend, this will actually have to change.
+    scope = Hash.new
+    scope[:name] = 'Scope'
+    scope[:type] = 'line'
+    scope[:dashStyle] = 'longdash'
+    scope[:color] = '#000'
+    series << scope
+
+    release = Hash.new
+    release[:name] = 'Projected Release Date'
+    release[:type] = 'line'
+    release[:color] = '#F00'
+    series << release
 
     return series
 

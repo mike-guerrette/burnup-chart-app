@@ -14,6 +14,7 @@
                 text: '<%= @project.name.to_s %> - Eight Weeks'
             },
             xAxis: {
+                tickColor: 'transparent',
                 categories: <%= raw @weeks.to_json %>
             },
             yAxis: [{
