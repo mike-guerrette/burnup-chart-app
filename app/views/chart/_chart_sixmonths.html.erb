@@ -14,7 +14,16 @@
                 text: '<%= @project.name.to_s %> - Six Months'
             },
             xAxis: {
-                categories: <%= raw @months.to_json %>
+                tickColor: 'transparent',
+                categories: <%= raw @months.to_json %>,
+                plotLines: [{
+                    color: '#F00',
+                    width: 2,
+                    value: <%= @months.index(@project.release_date.beginning_of_week(start_day = :sunday)) + (@project.release_date.wday)/7.0 %>,
+                    zIndex: 5,
+                    showInLegend: true
+                }]
+
             },
             yAxis: [{
                 min: 0,
