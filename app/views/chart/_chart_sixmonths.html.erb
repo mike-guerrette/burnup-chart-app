@@ -22,7 +22,11 @@
                     value: <%= @months.index(@project.release_date.beginning_of_week(start_day = :sunday)) + (@project.release_date.wday)/7.0 %>,
                     zIndex: 5,
                     showInLegend: true
-                }]
+                }],
+                labels: {
+                    rotation: -35,
+                    align: 'right'
+                }
 
             },
             yAxis: [{
@@ -42,7 +46,7 @@
             },
                 {
                     min: 0,
-                    max: <%= @scope %> + 20,
+                    max: <%= @scope %> + 30,
                     gridLineWidth: 0,
                     title: {
                         text: 'Cumulative Tasks / Stories'

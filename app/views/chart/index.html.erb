@@ -1,6 +1,9 @@
 <div class = 'index'>
 
-    <h1><%= @project.name %>- Burn-Up Chart</h1>
+    <h1><%= link_to "#{@project.name} - Burn-Up Chart", root_url %></h1>
+  <%= link_to "Back", :back, class: "link" %>
+  <%= link_to 'Project Tasks', project_tasks_path(@project), class: "link" %>
+  <%= link_to 'Edit Project', edit_project_path(@project), class: "link" %>
 
     <table>
       <tr>
@@ -16,7 +19,10 @@
     <%= render 'chart_sixmonths' %>
     <br>
 
-    <%= link_to "Back", project_tasks_path, class: "link" %>
-    <%= link_to 'Edit Project', edit_project_path(@project), class: "link" %>
+
+      <br>
+   <%= link_to "Back", :back, class: "link" %>
+   <%= link_to 'Project Tasks', project_tasks_path(@project), class: "link" %>
+   <%= link_to 'Edit Project', edit_project_path(@project), class: "link" %>
 
 </div>

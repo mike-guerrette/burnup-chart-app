@@ -118,7 +118,7 @@ class ChartController < ApplicationController
   def index
     @project = Project.find(params[:project_id])
     @tasks = @project.tasks
-    @tasktypes = @tasks.pluck('DISTINCT tasktype')
+    @tasktypes = @tasks.pluck('DISTINCT tasktype').sort
     @data = generateData
     @weeks = generateWeeks
     @series1 = generateSeries (@weeks)
