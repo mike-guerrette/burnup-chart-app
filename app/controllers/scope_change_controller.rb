@@ -1,0 +1,2 @@
+class ScopeChangeController < ApplicationController
+end
