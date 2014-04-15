@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @scope_change = ScopeChange.new
   end
 
   # GET /projects/1/edit
@@ -28,6 +29,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
+    @scope = @project.scope_changes.build(scope_params)
 
     respond_to do |format|
       if @project.save
@@ -73,5 +75,9 @@ class ProjectsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
       params.require(:project).permit(:name, :created_date, :release_date)
+    end
+
+    def scope_params
+      params.require(:scope_change).permit(:scope)
     end
 end

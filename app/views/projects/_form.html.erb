@@ -24,6 +24,19 @@
         <td><strong>Target Release Date:</strong></td>
         <td><%= f.date_select :release_date,  order: [:month, :day, :year] %></td>
       </tr>
+      <tr>
+        <%= fields_for @scope_change do |fa| %>
+            <table>
+              <tr>
+                <td><%= fa.label :scope, "Initial Scope:"%></td>
+              </tr>
+              <tr>
+                <td><%= fa.number_field :scope, :value => 0, :min => 0 %></td>
+              </tr>
+
+            </table>
+        <% end %>
+      </tr>
     </table>
 
   <div class="actions">
