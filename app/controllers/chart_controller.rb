@@ -119,6 +119,14 @@ class ChartController < ApplicationController
     @project = Project.find(params[:project_id])
     @tasks = @project.tasks
     @tasktypes = @tasks.pluck('DISTINCT tasktype').sort
+
+    @scopes = @project.scope_changes.pluck(:scope)
+    @scope = 0
+    for i in @scopes
+      @scope = @scope + i
+    end
+    logger.info @scope
+
     @data = generateData
     @weeks = generateWeeks
     @series1 = generateSeries (@weeks)
@@ -127,7 +135,7 @@ class ChartController < ApplicationController
     @series2 = generateSeries (@months)
     @pie_data = generatePieData
 
-    numScope = params[:scope]
-    numScope.nil? ? @scope = 125 : @scope = numScope
+    #numScope = params[:scope]
+    #numScope.nil? ? @scope = 125 : @scope = numScope
   end
 end

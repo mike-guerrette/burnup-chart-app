@@ -1,0 +1,15 @@
+
+<%= form_for :scope_change do |fa| %>
+    <table>
+      <tr>
+        <td><%= fa.label :scope, "Scope_Change:"%></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><%= fa.number_field :scope, :value => 0, :min => 0 %></td>
+        <td><%= fa.submit %></td>
+      </tr>
+
+    </table>
+
+<% end %>
